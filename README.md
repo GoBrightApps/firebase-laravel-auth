@@ -260,3 +260,4 @@ PRs and issues are welcome! Keep it Laravel-friendly:
 
 MIT
 # firebase-laravel-auth
+
