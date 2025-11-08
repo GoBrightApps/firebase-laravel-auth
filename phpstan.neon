@@ -1,0 +1,20 @@
+# includes:
+#     - vendor/larastan/larastan/extension.neon
+#     - vendor/nesbot/carbon/extension.neon
+#     - phar://phpstan.phar/conf/bleedingEdge.neon
+
+parameters:
+    reportUnmatchedIgnoredErrors: false
+    paths:
+        - src
+    level: max
+
+    tmpDir: /tmp/phpstan
+
+    ignoreErrors:
+        - "#PHPDoc tag @var#"
+        - "#Cannot cast mixed to int#"
+        - "#Cannot cast mixed to string#"
+        - "#Cannot cast mixed to float#"
+        - "#Trait .+ is used zero times and is not analysed#"
+        - "#return type has no value type specified in iterable type array#"

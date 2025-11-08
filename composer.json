@@ -1,0 +1,67 @@
+{
+    "name": "bright/firebase-laravel-auth",
+    "description": "The Firebase auth package providing an authentication layer for Laravel.",
+    "type": "library",
+    "keywords": [
+        "auth",
+        "fauth",
+        "bright",
+        "authentication",
+        "firebase",
+        "firebase-laravel",
+        "firebase-laravel-auth"
+    ],
+    "require": {
+        "php": "^8.2.0",
+        "kreait/laravel-firebase": "^6.1",
+        "laravel/framework": "^11.29|^12.12"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bright\\Fauth\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Saeed",
+            "email": "appsaeed7@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "laravel/pint": "^1.25",
+        "pestphp/pest": "^3.8",
+        "phpstan/phpstan": "^2.1",
+        "orchestra/testbench": "^10.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bright\\Fauth\\ServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "lint": "pint -v",
+        "test:lint": "pint --test -v",
+        "test:types": "phpstan analyse --ansi",
+        "test:unit": "pest --colors=always",
+        "test": [
+            "@test:lint",
+            "@test:types",
+            "@test:unit"
+        ]
+    }
+}
