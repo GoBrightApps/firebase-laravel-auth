@@ -51,6 +51,51 @@ Next: Tell Laravel to use the **fauth** driver for your user provider.
 ],
 ```
 
+#### User model configuration
+```php
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use HasFauth;
+
+    /**
+     * The attributes are fillable in database + firebase.
+     */
+    protected $fillable = [
+        'uid', // required in database | Get the key by getFauthKeyName()
+
+        // fauth attributes (The fields doesn't touch database) mapped by: $fauth_mapping
+        'name',
+        'email',
+        'phone',
+        'status',
+        'avatar',
+        'options',
+        'password',
+    ];
+
+    /**
+     * The Fauth attribute key mappings between the local model and Firebase.
+     * 
+     * Firebase fillable + mapping keys
+     *
+     * @var array<string, string>
+     */
+    protected array $fauth_mapping = [
+        'name' => 'displayName',
+        'email' => 'email',
+        'phone' => 'phoneNumber',
+        'avatar' => 'photoURL',
+        'status' => 'disabled',
+        'options' => 'customClaims',
+        'disabled' => 'disabled',
+        'password' => 'password',
+        'emailVerified' => 'emailVerified',
+    ];
+}
+```
+
 Nothing else to publish. The package’s service provider is auto-discovered 
 If not use `Bright\Fauth\ServiceProvider`. in laravel providers
 
