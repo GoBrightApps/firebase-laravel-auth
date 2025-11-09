@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Bright\Fauth;
 
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Kreait\Laravel\Firebase\Facades\Firebase;
 
-class ServiceProvider extends BaseServiceProvider implements DeferrableProvider
+class ServiceProvider extends BaseServiceProvider
 {
     /**
      * Register services.
@@ -33,13 +32,4 @@ class ServiceProvider extends BaseServiceProvider implements DeferrableProvider
         });
     }
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array<int, string>
-     */
-    public function provides(): array
-    {
-        return ['fauth'];
-    }
 }
