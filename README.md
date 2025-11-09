@@ -168,6 +168,20 @@ $u2  = $fauth->upsert($new->uid, ['email' => 'new2@example.com']);
 $bye = $fauth->delete($new->uid);      // bool
 ```
 
+## Error handling
+
+-   Many operations return `null` on failure or throw a Laravel `ValidationException`.
+-   Use `message($code, $default)` to map Firebase error codes to a human-readable string.
+
+```php
+\Bright\Fauth\Futils::message('error code');
+
+\Bright\Fauth\Futils::message('USER_DISABLED'); // results: The user account has been disabled.
+
+// Example 
+\Bright\Fauth\Futils::message($e->getMessage());
+```
+
 ## Testing
 
 Fake Mode for Testing
@@ -236,11 +250,6 @@ it('can create, update, and delete a user', function () {
 $fauth->sendVerificationEmail($user);
 $fauth->assertCalled('sendVerificationEmail');
 ```
-
-## Error handling
-
--   Many operations return `null` on failure or throw a Laravel `ValidationException`.
--   Use `message($code, $default)` to map Firebase error codes to a human-readable string.
 
 ## Security & Production Notes
 
