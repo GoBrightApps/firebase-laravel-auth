@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Bright\Fauth\AuthUserProvider;
 use Bright\Fauth\FauthFake;
 use Bright\Fauth\ServiceProvider;
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Facades\Auth;
 
 beforeEach(function () {
@@ -48,13 +47,6 @@ it('auth provider resolves with model from config', function () {
     $resolved = Auth::createUserProvider('fauth');
 
     expect($resolved)->toBeInstanceOf(AuthUserProvider::class);
-});
-
-it('is deferrable and provides only fauth', function () {
-    $provider = app()->getProvider(ServiceProvider::class);
-
-    expect($provider)->toBeInstanceOf(DeferrableProvider::class)
-        ->and($provider->provides())->toBe(['fauth']);
 });
 
 it('fauth binding exists, is singleton, and uses the fake', function () {

@@ -240,7 +240,6 @@ class Futils
         }
     }
 
-
     /**
      * Remap the keys of an array using a given mapping array.
      *

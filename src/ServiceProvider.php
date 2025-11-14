@@ -31,5 +31,4 @@ class ServiceProvider extends BaseServiceProvider
             return new AuthUserProvider($hasher, (string) $config['model']);
         });
     }
-
 }
